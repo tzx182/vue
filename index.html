@@ -12,12 +12,13 @@
     	<a v-bind:href="tags">haha</a>
     	<input type="text" v-bind:value="name" />
         <p v-html="website"></p>
-        <button v-on:click="add(1)">加1岁</button>
+        <button @click.once="add(1)">加1岁</button>
         <button v-on:click="reduce(1)">减一岁</button>
         <button v-on:dblclick="add(10)">加10岁</button>
         <button v-on:dblclick="reduce(10)">减10岁</button>
         <p>{{age}}</p>
-        <div class="page" v-on:mousemove="pageXY">{{x}} , {{y}}</div>
+        <div class="page" v-on:mousemove="pageXY">{{x}} , {{y}} <span v-on:mousemove.stop="">阻止事件</span></div>
+        <a href="www.baidu.com" v-on:click.prevent="">阻止a标签跳转</a>
     </div>
 	<script src="js/vue.js"></script>
 	<script>
@@ -44,6 +45,9 @@
                 pageXY:function(event){
                     this.x=event.offsetX;
                     this.y=event.offsetY;
+                },
+                remove:function(event){
+                	event.stopPropagation()
                 }
             }
 		})
