@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue</title>
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div id="first-vue">
+        <h1>{{grent('afternoon')}}</h1>
+    	<p>{{name}}</p>
+    	<a v-bind:href="tags">haha</a>
+    	<input type="text" v-bind:value="name" />
+        <p v-html="website"></p>
+        <button v-on:click="add(1)">加1岁</button>
+        <button v-on:click="reduce(1)">减一岁</button>
+        <button v-on:dblclick="add(10)">加10岁</button>
+        <button v-on:dblclick="reduce(10)">减10岁</button>
+        <p>{{age}}</p>
+        <div class="page" v-on:mousemove="pageXY">{{x}} , {{y}}</div>
+    </div>
+	<script src="js/vue.js"></script>
+	<script>
+		new Vue({
+            el:"#first-vue",
+            data:{
+            	name:'童大馨',
+            	age:24,
+            	tags:"www.baidu.com",
+            	website:'<a href="www.baidu.com">click</a>',
+            	x:0,
+            	y:0
+            },
+            methods:{
+            	grent:function(time){
+            		return 'Good '+time+this.name+"!"
+            	},
+                add:function(inc){
+                	this.age += inc;
+                },
+                reduce:function(subtract){
+                    this.age -= subtract;
+                },
+                pageXY:function(event){
+                    this.x=event.offsetX;
+                    this.y=event.offsetY;
+                }
+            }
+		})
+	</script>
+</body>
+</html>
