@@ -4,9 +4,10 @@
 	<meta charset="UTF-8">
 	<title>vue</title>
 	<link rel="stylesheet" href="css/index.css">
+	<script src="js/vue.js"></script>
 </head>
 <body>
-    <div id="first-vue">
+   <!--  <div id="first-vue">
         <h1>{{grent('afternoon')}}</h1>
     	<p>{{name}}</p>
     	<a v-bind:href="tags">haha</a>
@@ -20,7 +21,6 @@
         <div class="page" v-on:mousemove="pageXY">{{x}} , {{y}} <span v-on:mousemove.stop="">阻止事件</span></div>
         <a href="www.baidu.com" v-on:click.prevent="">阻止a标签跳转</a>
     </div>
-	<script src="js/vue.js"></script>
 	<script>
 		new Vue({
             el:"#first-vue",
@@ -50,6 +50,26 @@
                 	event.stopPropagation()
                 }
             }
+		})
+	</script> -->
+	<!-- 按键修饰符 -->
+	<div id="key_down">
+		<lable>名字</lable>
+		<input type="text" v-on:keyup.enter="name">
+		<lable>年龄</lable>
+		<input type="text" v-on:keyup.alt.enter="age">
+	</div>
+	<script>
+		new Vue({
+			el:"#key_down",
+			methods:{
+                 name:function(){
+                 	console.log("你正在输入名字");
+                 },
+                 age:function(){
+                 	console.log("你正在输入年龄");
+                 }
+			}
 		})
 	</script>
 </body>
